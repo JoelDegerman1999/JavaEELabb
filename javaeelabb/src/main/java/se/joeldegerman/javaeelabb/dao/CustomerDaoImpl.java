@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import se.joeldegerman.javaeelabb.entities.Customer;
+import se.joeldegerman.javaeelabb.exception.CustomerNotFoundException;
 
 @Stateless
 public class CustomerDaoImpl implements CustomerDao {
@@ -21,15 +22,21 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 
 	@Override
-	public Customer removeCustomer(int id) {
+	public Customer removeCustomer(int id) throws CustomerNotFoundException{
 		Customer customer = em.find(Customer.class, id);
+		if (customer == null)
+			throw new CustomerNotFoundException("Customer not found");
 		em.remove(customer);
 		return customer;
 	}
 
 	@Override
-	public Customer findCustomer(int id) {
-		return em.find(Customer.class, id);
+	public Customer findCustomer(int id) throws CustomerNotFoundException {
+		Customer customer = em.find(Customer.class, id);
+		if (customer == null)
+			throw new CustomerNotFoundException("Customer not found");
+
+		return customer;
 	}
 
 	@Override
@@ -42,7 +49,5 @@ public class CustomerDaoImpl implements CustomerDao {
 		updatedCustomer = em.merge(updatedCustomer);
 		return updatedCustomer;
 	}
-	
-	
-	
+
 }

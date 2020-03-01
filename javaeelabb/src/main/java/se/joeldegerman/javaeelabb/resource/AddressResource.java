@@ -11,7 +11,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import se.joeldegerman.javaeelabb.entities.Address;
-import se.joeldegerman.javaeelabb.service.CustomerService;
+import se.joeldegerman.javaeelabb.exception.CustomerNotFoundException;
+import se.joeldegerman.javaeelabb.service.AddressService;
 
 @Stateless
 @Consumes(MediaType.APPLICATION_JSON)
@@ -19,21 +20,21 @@ import se.joeldegerman.javaeelabb.service.CustomerService;
 public class AddressResource {
 
 	@Inject
-	private CustomerService customerService;
+	private AddressService addressService;
 
 	@POST
-	public Address addAddress(Address address, @PathParam("customerId") int id) {
-		return customerService.addAddress(address, id);
+	public Address addAddress(Address address, @PathParam("customerId") int id) throws CustomerNotFoundException {
+		return addressService.addAddress(address, id);
 	}
 
 	@PUT
-	public Address updateAddress(@PathParam("customerId") int customerId, Address address) {
-		return customerService.updateAddress(customerId, address);
+	public Address updateAddress(@PathParam("customerId") int customerId, Address address) throws CustomerNotFoundException {
+		return addressService.updateAddress(customerId, address);
 	}
 
 	@GET
-	public Address getAddress(@PathParam("customerId") int id) {
-		return customerService.getAddress(id);
+	public Address getAddress(@PathParam("customerId") int id) throws CustomerNotFoundException {
+		return addressService.getAddress(id);
 	}
 
 }
