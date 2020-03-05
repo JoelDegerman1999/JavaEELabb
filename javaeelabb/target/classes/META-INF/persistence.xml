@@ -20,6 +20,8 @@
 			source, this configuration uses the JakartaEE default data source is just 
 			for development and testing! -->
 		<jta-data-source>java:/javaeemini</jta-data-source>
+		<class>se.joeldegerman.javaeelabb.entities.Address</class>
+		<class>se.joeldegerman.javaeelabb.entities.Customer</class>
 		<properties>
 			<!--The database schema ist auto created on deployment and dropped before 
 				redeploy. Note: the following configuration does not drop the tables on undeploy. 

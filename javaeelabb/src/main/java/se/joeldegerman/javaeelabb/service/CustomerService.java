@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import se.joeldegerman.javaeelabb.dao.CustomerDao;
+import se.joeldegerman.javaeelabb.entities.Address;
 import se.joeldegerman.javaeelabb.entities.Customer;
 import se.joeldegerman.javaeelabb.exception.CustomerNotFoundException;
 
@@ -33,6 +34,13 @@ public class CustomerService {
 
 	public Customer updateCustomer(Customer updatedCustomer) {
 		return dao.updateCustomer(updatedCustomer);
+	}
+
+	public Customer updateAddress(int customerId, Address address) throws CustomerNotFoundException {
+		Customer customer = findCustomer(customerId);
+		customer.setAddress(address);
+		updateCustomer(customer);
+		return customer;
 	}
 
 }

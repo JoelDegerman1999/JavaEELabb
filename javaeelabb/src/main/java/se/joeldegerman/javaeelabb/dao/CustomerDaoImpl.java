@@ -22,7 +22,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 
 	@Override
-	public Customer removeCustomer(int id) throws CustomerNotFoundException{
+	public Customer removeCustomer(int id) throws CustomerNotFoundException {
 		Customer customer = em.find(Customer.class, id);
 		if (customer == null)
 			throw new CustomerNotFoundException("Customer not found");
