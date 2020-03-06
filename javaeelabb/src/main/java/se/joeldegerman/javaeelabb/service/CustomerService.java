@@ -36,11 +36,11 @@ public class CustomerService {
 		return dao.updateCustomer(updatedCustomer);
 	}
 
-	public Customer updateAddress(int customerId, Address address) throws CustomerNotFoundException {
+	public Address updateAddress(int customerId, Address address) throws CustomerNotFoundException {
 		Customer customer = findCustomer(customerId);
 		customer.setAddress(address);
 		updateCustomer(customer);
-		return customer;
+		return address;
 	}
 
 }

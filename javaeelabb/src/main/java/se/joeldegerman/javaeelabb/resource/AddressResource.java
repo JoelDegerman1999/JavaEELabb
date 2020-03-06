@@ -10,7 +10,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import se.joeldegerman.javaeelabb.entities.Address;
-import se.joeldegerman.javaeelabb.entities.Customer;
 import se.joeldegerman.javaeelabb.exception.CustomerNotFoundException;
 import se.joeldegerman.javaeelabb.service.AddressService;
 import se.joeldegerman.javaeelabb.service.CustomerService;
@@ -29,7 +28,7 @@ public class AddressResource {
 	// TODO to choose if I am going to return the customer with the new address or
 	// if I am going to only return the address
 	@PUT
-	public Customer updateAddress(@PathParam("customerId") int customerId, Address address) throws CustomerNotFoundException {
+	public Address updateAddress(@PathParam("customerId") int customerId, Address address) throws CustomerNotFoundException {
 		return customerService.updateAddress(customerId, address);
 	}
 

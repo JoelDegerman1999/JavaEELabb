@@ -19,18 +19,14 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String firstName;
 	private String lastName;
-	
+
 	@Embedded
 	private Address address;
-	
+
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date birthDate;
-	
-	
-	
+
 }
-
-

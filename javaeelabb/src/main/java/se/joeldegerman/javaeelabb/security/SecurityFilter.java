@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.Provider;
 
-//@Provider
+@Provider
 public class SecurityFilter implements ContainerRequestFilter {
 
 	private static final String AUTHORIZATION_HEADER_KEY = "Authorization";
